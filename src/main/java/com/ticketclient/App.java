@@ -24,7 +24,7 @@ public class App extends Application {
     PrimaryController primaryController;
     @Override
     public void start(Stage stage) throws IOException {
-        socketClient= new Socket("127.0.0.1",SERVER_PORT);
+        socketClient= new Socket("192.168.0.103",SERVER_PORT);
         inputStream=socketClient.getInputStream();
         outputStream=socketClient.getOutputStream();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("primary.fxml"));
