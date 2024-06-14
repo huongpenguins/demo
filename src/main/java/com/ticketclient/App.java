@@ -22,9 +22,10 @@ public class App extends Application {
     private static Scene scene;
     Socket socketClient;
     PrimaryController primaryController;
+    int a[] = new int[24];
     @Override
     public void start(Stage stage) throws IOException {
-        socketClient= new Socket("192.168.0.103",SERVER_PORT);
+        socketClient= new Socket("localhost",SERVER_PORT);
         inputStream=socketClient.getInputStream();
         outputStream=socketClient.getOutputStream();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("primary.fxml"));
@@ -33,6 +34,11 @@ public class App extends Application {
         primaryController.setApp(this);
         primaryController.setOutputStream(outputStream);
         primaryController.setInputStream(inputStream);
+
+        for(int i=0;i<24;i++){
+        a[i]=inputStream.read();
+        }
+        primaryController.updateSeatStatus(a);
         scene = new Scene(root, 640, 480);
         stage.setScene(scene);
         stage.show();

@@ -21,6 +21,8 @@ public class PrimaryController {
     private  OutputStream outputStream;
     public App app;
     int[] seatStatus=new int[24];
+    Button button;
+    
     public void updateSeatStatus(int[] seatStatus) {
         int row = 0;
         int col = 0;
@@ -42,7 +44,7 @@ public class PrimaryController {
         }
     }
     public void choose(ActionEvent event){
-        Button button = (Button)event.getSource();
+        button = (Button)event.getSource();
         i=button.getText();
         
     }
@@ -60,6 +62,7 @@ public class PrimaryController {
         }
         else{
              try {
+                
                 outputStream.write(Integer.parseInt(i));
                 outputStream.flush();
                 int t= inputStream.read();
@@ -74,7 +77,9 @@ public class PrimaryController {
                     alert.setTitle("Thông báo");
                     alert.setContentText("Mua ve thanh cong");
                     alert.showAndWait();
+                    button.setDisable(true);
                 }
+                i=null;
             } catch (NumberFormatException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
