@@ -24,22 +24,19 @@ public class PrimaryController {
     Button button;
     
     public void updateSeatStatus(int[] seatStatus) {
-        int row = 0;
-        int col = 0;
-        for (Node node : gridPane.getChildren()) {
-            
+        int index = 0;
+        for (int i=0;i<4;i++) {
+            for (int j=0; j<6;j++) {
+                Node node = gridPane.getChildren().get(index);
                 Button button = (Button) node;
-                int seatIndex = row * 6 + col ; 
-                if (seatStatus[seatIndex]==0) {
+                int seatIndex = i*6+j; 
+                if (seatStatus[seatIndex] == 0) {
                     button.setDisable(true);
                 } else {
                     button.setDisable(false);
                 }
-                col++;
-                if (col == 6) {
-                    col = 0;
-                    row++;
-                }
+                index++;
+            }
             
         }
     }
