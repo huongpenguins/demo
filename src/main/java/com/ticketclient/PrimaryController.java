@@ -40,11 +40,13 @@ public class PrimaryController {
             
         }
     }
+
     public void choose(ActionEvent event){
         button = (Button)event.getSource();
         i=button.getText();
         
     }
+    
     public void buy(ActionEvent event) throws IOException{
         for(int i =0;i<24;i++){
             seatStatus[i]=inputStream.read();
